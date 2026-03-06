@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>6th Grade TEKS Science Adventure</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0d1b2a; color: white; text-align: center; margin: 0; padding: 20px; }
+        button { padding: 12px 20px; margin: 5px; font-size: 15px; border-radius: 8px; cursor: pointer; background: #1b263b; color: white; border: 2px solid #415a77; transition: 0.2s; width: 280px; }
+        button:hover { background: #415a77; transform: translateY(-2px); }
+        #gameScreen, #questionScreen, #bossScreen { display: none; }
+        .img-container { background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 15px; display: inline-block; margin: 15px; border: 1px solid #778da9; }
+        img { width: 180px; height: 180px; object-fit: contain; }
+        #stats { font-size: 1.1em; background: #1b263b; padding: 10px 20px; border-radius: 50px; display: inline-block; margin-bottom: 10px; border: 1px solid #778da9; }
+        #lives-display { color: #ff4d6d; font-size: 1.2em; font-weight: bold; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <audio id="music" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9c2d49.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>🧪 TEKS Science Adventure</h1>
+
+    <div id="titleScreen">
+        <div class="img-container">
+            <img src="https://www.gstatic.com/images/icons/material/system_gm/2x/science_white_48dp.png" alt="Science">
+        </div>
+        <br>
+        <button onclick="startGame()" style="width: 200px; font-weight: bold; background: #415a77;">START ADVENTURE</button>
+    </div>
+
+    <div id="gameScreen">
+        <h2 id="levelTitle"></h2>
+        <div id="stats">
+            Score: <span id="score">0</span> | 
+            XP: <span id="xp">0</span> | 
+            <span id="lives-display">❤️❤️❤️❤️</span>
+        </div>
+
+        <div class="img-container">
+            <img id="levelImage" src="">
+        </div>
+
+        <div id="questionScreen">
+            <h3 id="question"></h3>
+            <div id="answers"></div>
+        </div>
+
+        <div id="bossScreen">
+            <h2 style="color: #f72585;">⚔️ BOSS BATTLE ⚔️</h2>
+            <h3 id="bossQuestion"></h3>
+            <div id="bossAnswers"></div>
+        </div>
+    </div>
+
+    <script>
+        let score = 0, xp = 0, level = 0, questionIndex = 0, lives = 4;
+        const GOAL = 15;
+
+        // Same Level Data as before...
+        const levels = [
+            { name: "Matter & Particles", image: "https://www.gstatic.com/images/icons/material/system_gm/2x/blur_on_white_48dp.png", questions: [/* 15 questions */], boss: [/* 1 question */] },
+            // ... (Rest of levels 2, 3, and 4)
+        ];
+
+        function startGame() {
+            // Start the music!
+            const audio = document.getElementById("music");
+            audio.volume = 0.4; // Set volume to 40%
+            audio.play().catch(e => console.log("Audio needs user interaction first"));
+
+            document.getElementById("titleScreen").style.display = "none";
+            document.getElementById("gameScreen").style.display = "block";
+            loadLevel();
+        }
+
+        // Rest of your game logic functions (loadLevel, loadQuestion, answer, loseLife, etc.)
+    </script>
+</body>
+</html>
